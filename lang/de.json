@@ -1,10 +1,10 @@
 {
-   "disable_lock_helper" : "Disables lock control action via the UI",
-   "disable_lock_label" : "Disable lock control",
-   "hide_sensor_helper" : "Versteckt den Türsensor. Sattdessen wird der Status der Tür nur noch über diese Modul angezeigt.",
-   "hide_sensor_label" : "Verstecke Türsensor",
+   "disable_lock_helper" : "Dekativiert die Bedienung des Türöffners in der UI",
+   "disable_lock_label" : "Türöffner in UI deaktivieren",
+   "hide_sensor_helper" : "Blendet den Türsensor in den UI aus. Der Zustand der Tür ist nur noch über diese Modul ersichtlich.",
+   "hide_sensor_label" : "Sensor ausblenden",
    "lock_label" : "Türöffner",
-   "m_descr" : "An electric Strike is an access control device used to lock and release doors. Electric Strikes are installed in or on the doorframe and work in conjunction with mechanical door locks, on the principle of electronically controlling the rotation of the keeper. This app combines the control of a strike lock with a door sensor information and allows to add further functionality.",
-   "m_title" : "Stike lock module",
+   "m_descr" : "Ein Türöffner mit elektromagnetischer Entriegelung ist kann benutzt werden um Türen zu verriegeln oder zu öffnen. Elektonischer Türöffner werden im Türrahmen gegenüber von einem Einsteck-Riegel-Fallenschloss und mechanischen Türschlössern eingebaut. Dieses Modul kombiniert die Kontrolle eines Türöffners mit einem Türsensor der den Zustand der Tür anzeigt.",
+   "m_title" : "Türöffner Modul",
    "sensor_label" : "Türsensor"
 }
