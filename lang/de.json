@@ -4,7 +4,7 @@
    "hide_sensor_helper" : "Versteckt den Türsensor. Sattdessen wird der Status der Tür nur noch über diese Modul angezeigt.",
    "hide_sensor_label" : "Verstecke Türsensor",
    "lock_label" : "Türöffner",
-   "m_descr" : "Ein  Electric Strike is an access control device used to lock and release doors. Electric  Strikes are installed in or on the doorframe and work in conjunction with mechanical door locks, on the principle of electronically controlling the rotation of the keeper. This app combines the control of a strike lock with a door sensor information and allows to add further functionality.",
+   "m_descr" : "An electric Strike is an access control device used to lock and release doors. Electric Strikes are installed in or on the doorframe and work in conjunction with mechanical door locks, on the principle of electronically controlling the rotation of the keeper. This app combines the control of a strike lock with a door sensor information and allows to add further functionality.",
    "m_title" : "Stike lock module",
    "sensor_label" : "Türsensor"
 }
