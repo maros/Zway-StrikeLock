@@ -1,10 +1,10 @@
 {
-   "disable_lock_helper" : "Dekativiert die Bedienung des Türöffners in der UI",
-   "disable_lock_label" : "Türöffner in UI deaktivieren",
-   "hide_sensor_helper" : "Blendet den Türsensor in den UI aus. Der Zustand der Tür ist nur noch über diese Modul ersichtlich.",
+   "hide_lock_helper" : "Blendet den Türöffner in der UI aus. Die Kontrolle der Tür ist dann nur noch über dieses Modul möglich.",
+   "hide_lock_label" : "Türöffner in UI ausblenden",
+   "hide_sensor_helper" : "Blendet den Türsensor in den UI aus. Der Zustand der Tür ist dann nur noch über diese Modul ersichtlich.",
    "hide_sensor_label" : "Sensor ausblenden",
    "lock_label" : "Türöffner",
-   "m_descr" : "Ein Türöffner mit elektromagnetischer Entriegelung ist kann benutzt werden um Türen zu verriegeln oder zu öffnen. Elektonischer Türöffner werden im Türrahmen gegenüber von einem Einsteck-Riegel-Fallenschloss und mechanischen Türschlössern eingebaut. Dieses Modul kombiniert die Kontrolle eines Türöffners mit einem Türsensor der den Zustand der Tür anzeigt.",
+   "m_descr" : "Mittels eines elektrischen Türöffners kann eine Tür geöffnet werden, solange  die Tür nur durch die „Falle“ im Rahmen gehalten wird und das Schloss nicht durch einen Schließriegel abgeschlossen ist. Wird der Türöffner betätigt, kann der Nutzer die Tür einfach aufdrücken. Diese App kombiniert die Ansteuerung eines elektr. Türöffners mit einem Türsensor, der angibt, ob die Tür offen oder geschlossen ist. Damit entstehen drei mögliche Zustände:<ul><li>Tür ist geschlossen und Türöffner inaktiv</li><li>Tür ist geschlossen aber der Türöffner inaktiv. Ein Nutzer kann die Tür aufdrücken </li><li>Tür ist geöffnet. Der Türöffner ist inaktiv, weil er in diesem Zustand keine Funktion hat.</li></ul>Die App ermöglicht folgende Einstellmöglichkeiten<ol><li>Auswahl des Türöffner-Gerätes</li><li>Auswahl des Türsensorgerätes</li><li>Auswahl, ob die Elemente der  beiden Geräte in der Elemente-Ansicht unterdrückt werden sollen.</li></ul>",
    "m_title" : "Türöffner Modul",
    "sensor_label" : "Türsensor"
 }
