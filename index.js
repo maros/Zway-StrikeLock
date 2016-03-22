@@ -15,9 +15,11 @@ function StrikeLock (id, controller) {
     
     this.vDev               = undefined;
     this.sensorDevHidden    = false;
+    this.lockDevHidden      = false;
     this.sensorDev          = undefined;
     this.lockDev            = undefined;
     this.langFile           = undefined;
+    this.devices            = ['lock','sensor'];
     this.iconPath           = '/ZAutomation/api/v1/load/modulemedia/'+this.constructor.name;
 }
 
@@ -35,36 +37,27 @@ StrikeLock.prototype.init = function (config) {
     var self = this;
     
     self.langFile = self.controller.loadModuleLang(self.constructor.name);
-    var devieType, deviceLevel;
-    if (self.config.disableLock) {
-        devieType = 'sensorBinary';
-        deviceLevel = 'close';
-    } else {
-        devieType = 'doorlock';
-        deviceLevel = 'off';
-    }
     
     // Create vdev
     self.vDev = self.controller.devices.create({
-        deviceId: "StrikeLock_" + this.id + "_" + devieType,
+        deviceId: "StrikeLock_" + self.id.,
         defaults: {
             metrics: {
-                probeTitle: '',
                 title: self.langFile.m_title,
-                level: deviceLevel,
+                level: 'close',
                 icon: self.iconPath+'/icon.png'
             }
         },
         overlay: {
-            deviceType: devieType
+            deviceType: 'doorlock'
         },
         handler: function(command,args) {
             if (self.lockDev !== null) {
                 if (command === 'update') {
                     self.lockDev.performCommand('update');
+                    self.sensorDev.performCommand('update');
                     self.updateState();
-                } else if (self.config.disableLock === false
-                    && (command === 'close' || command === 'open')) {
+                } else if (command === 'close' || command === 'open') {
                     console.error('[StrikeLock] Got command '+command);
                     self.lockDev.performCommand(command);
                 }
@@ -80,30 +73,31 @@ StrikeLock.prototype.initCallback = function() {
     var self = this;
     
     self.callback   = _.bind(self.updateState,self);
-    self.lockDev    = self.controller.devices.get(self.config.lock);
-    self.sensorDev  = self.controller.devices.get(self.config.sensor);
     
-    if (self.sensorDev === null) {
-        console.error('[StrikeLock] Missing sensor device '+self.config.sensor);
-        return;
+    // Find, hide & bind devices
+    var ok = true;
+    _.each(self.devices,function(type) {
+        var deviceId = self.config[type];
+        var vDev = self.controller.devices.get(deviceId);
+        if (vDev === null) {
+            ok = false;
+            console.error('[StrikeLock] Missing '+type+' device '+deviceId);
+            return;
+        }
+        
+        if (self.config[type+'Hide']
+            && vDev.get('visibility') !== false) {
+            self[type+'DevHidden'] = true;
+            vDev.set({'visibility': false});
+        }
+        
+        vDev.on('change:metrics:level',self.callback);
+        self[type+'Dev'] = vDev;
+    });
+    
+    if (ok) {
+        self.callback();
     }
-    if (self.lockDev === null) {
-        console.error('[StrikeLock] Missing lock device '+self.config.lock);
-        return;
-    }
-    
-    if (self.config.hideSensor
-        && self.sensorDev.get('visibility')) {
-        self.sensorDevHidden = true;
-        self.sensorDev.set({'visibility': false});
-    }
-    
-    self.lockDev.set({'visibility': false});
-    
-    self.lockDev.on('change:metrics:level',self.callback);
-    self.sensorDev.on('change:metrics:level',self.callback);
-    
-    self.callback();
 };
 
 StrikeLock.prototype.stop = function () {
@@ -114,17 +108,22 @@ StrikeLock.prototype.stop = function () {
         self.vDev = undefined;
     }
     
-    if (self.sensorDev) {
-        self.sensorDev.off('change:metrics:level',self.callback);
-        if (self.sensorDevHidden) {
-            self.sensorDev.set({'visibility': true});
+    // Find, show & unbind devices
+    _.each(self.devices,function(type) {
+        var vDev = self.controller.devices.get(self.config[type]);
+        
+        if (vDev === null) {
+            return;
         }
-    }
-    
-    if (self.lockDev) {
-        self.lockDev.off('change:metrics:level',self.callback);
-        self.lockDev.set({'visibility': true});
-    }
+        
+        if (self[type+'DevHidden'] === true) {
+            self[type+'DevHidden'] = false;
+            vDev.set({'visibility': true});
+        }
+        
+        vDev.off('change:metrics:level',self.callback);
+        self[type+'Dev'] = vDev;
+    });
     
     self.callback = undefined;
     
@@ -152,5 +151,4 @@ StrikeLock.prototype.updateState = function (event) {
     self.vDev.set('metrics:lockLevel',lockLevel);
     self.vDev.set('metrics:sensorLevel',sensorLevel);
     self.vDev.set('metrics:icon',self.iconPath+'/icon_'+sensorIcon+'_'+lockIcon+'.png');
-
 };
