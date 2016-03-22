@@ -3,9 +3,9 @@
    "category" : "device_enhancements",
    "defaults" : {
       "description" : "__m_descr__",
-      "title" : "__m_title__",
-      "lockHide": false,
-      "sensorHide": false
+      "lockHide" : false,
+      "sensorHide" : false,
+      "title" : "__m_title__"
    },
    "dependencies" : [],
    "homepage" : "https://github.com/maros/Zway-StrikeLock",
@@ -14,16 +14,6 @@
    "moduleName" : "StrikeLock",
    "options" : {
       "fields" : {
-         "lockHide" : {
-            "helper" : "__lock_hide_helper__",
-            "label" : "__lock_hide_label__",
-            "order" : 2
-         },
-         "sensorHide" : {
-            "helper" : "__sensor_hide_helper__",
-            "label" : "__sensor_hide_label__",
-            "order" : 4
-         },
          "lock" : {
             "datasource" : "namespaces",
             "field" : "optionLabels",
@@ -32,6 +22,11 @@
             "order" : 1,
             "type" : "select"
          },
+         "lockHide" : {
+            "helper" : "__lock_hide_helper__",
+            "label" : "__lock_hide_label__",
+            "order" : 2
+         },
          "sensor" : {
             "datasource" : "namespaces",
             "field" : "optionLabels",
@@ -39,6 +34,11 @@
             "optionLabels" : "namespaces:devices_sensorBinary:deviceName,namespaces:devices_switchBinary:deviceName",
             "order" : 3,
             "type" : "select"
+         },
+         "sensorHide" : {
+            "helper" : "__sensor_hide_helper__",
+            "label" : "__sensor_hide_label__",
+            "order" : 4
          }
       }
    },
@@ -48,28 +48,28 @@
    },
    "schema" : {
       "properties" : {
-         "lockHide" : {
-            "type" : "boolean"
-         },
-         "sensorHide" : {
-            "type" : "boolean"
-         },
          "lock" : {
             "datasource" : "namespaces",
             "enum" : "namespaces:devices_doorlock:deviceId",
             "field" : "enum",
             "required" : true
          },
+         "lockHide" : {
+            "type" : "boolean"
+         },
          "sensor" : {
             "datasource" : "namespaces",
             "enum" : "namespaces:devices_sensorBinary:deviceId,namespaces:devices_switchBinary:deviceId",
             "field" : "enum",
             "required" : true
+         },
+         "sensorHide" : {
+            "type" : "boolean"
          }
       },
       "required" : true,
       "type" : "object"
    },
    "singleton" : false,
-   "version" : "1.00"
+   "version" : 1.01
 }
