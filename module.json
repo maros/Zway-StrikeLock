@@ -3,7 +3,9 @@
    "category" : "device_enhancements",
    "defaults" : {
       "description" : "__m_descr__",
-      "title" : "__m_title__"
+      "title" : "__m_title__",
+      "lockHide": false,
+      "sensorHide": false
    },
    "dependencies" : [],
    "homepage" : "https://github.com/maros/Zway-StrikeLock",
@@ -12,14 +14,14 @@
    "moduleName" : "StrikeLock",
    "options" : {
       "fields" : {
-         "disableLock" : {
-            "helper" : "__disable_lock_helper__",
-            "label" : "__disable_lock_label__",
+         "lockHide" : {
+            "helper" : "__lock_hide_helper__",
+            "label" : "__lock_hide_label__",
             "order" : 2
          },
-         "hideSensor" : {
-            "helper" : "__hide_sensor_helper__",
-            "label" : "__hide_sensor_label__",
+         "sensorHide" : {
+            "helper" : "__sensor_hide_helper__",
+            "label" : "__sensor_hide_label__",
             "order" : 4
          },
          "lock" : {
@@ -46,12 +48,10 @@
    },
    "schema" : {
       "properties" : {
-         "disableLock" : {
-            "default" : false,
+         "lockHide" : {
             "type" : "boolean"
          },
-         "hideSensor" : {
-            "default" : false,
+         "sensorHide" : {
             "type" : "boolean"
          },
          "lock" : {
