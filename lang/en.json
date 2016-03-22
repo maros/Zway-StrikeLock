@@ -1,8 +1,8 @@
 {
-   "hide_lock_helper" : "Hides lock control action in the UI. If enabled, the control of the door will only be possible via this module.",
-   "hide_lock_label" : "Hide lock control",
-   "hide_sensor_helper" : "Hides the door sensor in the UI. If enabled, the status of the door will only be visible via this module.",
-   "hide_sensor_label" : "Hide door sensor",
+   "lock_hide_helper" : "Hides lock control action in the UI. If enabled, the control of the door will only be possible via this module.",
+   "lock_hide_label" : "Hide lock control",
+   "sensor_hide_helper" : "Hides the door sensor in the UI. If enabled, the status of the door will only be visible via this module.",
+   "sensor_hide_label" : "Hide door sensor",
    "lock_label" : "Lock device",
    "m_descr" : "An electric strike lock is an access control device used to lock and release doors. Electric strike locks are installed in or on the doorframe and work in conjunction with mechanical door locks. Once the strike lock is operated the user needs to push the door. This app combines the control of a strike lock with door sensor information into one widget. The door has 3 statuses:<ul><li>Door closed and lock inactive – not possible to open the door</li><li>Door closed but lock active – users may push the door and get entry</li><li>Door open – operation of strike lock is blocked because no function can be achieved</li></ul>The app allows the following settings.<ol><li>Selection of the Strike Lock Device</li><li>Selection of the Door Sensor Device</li><li>Selection if the original elements of these two devices shall be suppressed in the element view</li></ol>",
    "m_title" : "Strike lock module",

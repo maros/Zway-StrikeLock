@@ -1,8 +1,8 @@
 {
-   "hide_lock_helper" : "Blendet den Türöffner in der UI aus. Die Kontrolle der Tür ist dann nur noch über dieses Modul möglich.",
-   "hide_lock_label" : "Türöffner in UI ausblenden",
-   "hide_sensor_helper" : "Blendet den Türsensor in den UI aus. Der Zustand der Tür ist dann nur noch über diese Modul ersichtlich.",
-   "hide_sensor_label" : "Sensor ausblenden",
+   "lock_hide_helper" : "Blendet den Türöffner in der UI aus. Die Kontrolle der Tür ist dann nur noch über dieses Modul möglich.",
+   "lock_hide_label" : "Türöffner ausblenden",
+   "sensor_hide_helper" : "Blendet den Türsensor in den UI aus. Der Zustand der Tür ist dann nur noch über diese Modul ersichtlich.",
+   "sensor_hide_label" : "Sensor ausblenden",
    "lock_label" : "Türöffner",
    "m_descr" : "Mittels eines elektrischen Türöffners kann eine Tür geöffnet werden, solange  die Tür nur durch die „Falle“ im Rahmen gehalten wird und das Schloss nicht durch einen Schließriegel abgeschlossen ist. Wird der Türöffner betätigt, kann der Nutzer die Tür einfach aufdrücken. Diese App kombiniert die Ansteuerung eines elektr. Türöffners mit einem Türsensor, der angibt, ob die Tür offen oder geschlossen ist. Damit entstehen drei mögliche Zustände:<ul><li>Tür ist geschlossen und Türöffner inaktiv</li><li>Tür ist geschlossen aber der Türöffner inaktiv. Ein Nutzer kann die Tür aufdrücken </li><li>Tür ist geöffnet. Der Türöffner ist inaktiv, weil er in diesem Zustand keine Funktion hat.</li></ul>Die App ermöglicht folgende Einstellmöglichkeiten<ol><li>Auswahl des Türöffner-Gerätes</li><li>Auswahl des Türsensorgerätes</li><li>Auswahl, ob die Elemente der  beiden Geräte in der Elemente-Ansicht unterdrückt werden sollen.</li></ul>",
    "m_title" : "Türöffner Modul",
