@@ -40,7 +40,7 @@ StrikeLock.prototype.init = function (config) {
     
     // Create vdev
     self.vDev = self.controller.devices.create({
-        deviceId: "StrikeLock_" + self.id.,
+        deviceId: "StrikeLock_" + self.id,
         defaults: {
             metrics: {
                 title: self.langFile.m_title,
