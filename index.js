@@ -58,8 +58,13 @@ StrikeLock.prototype.init = function (config) {
                     self.sensorDev.performCommand('update');
                     self.updateState();
                 } else if (command === 'close' || command === 'open') {
-                    console.error('[StrikeLock] Got command '+command);
-                    self.lockDev.performCommand(command);
+                    var lockLevel = self.lockDev.get('metrics:level');
+                    if (command === lockLevel) {
+                        console.log('[StrikeLock] Ignoring command '+command);
+                    } else {
+                        console.log('[StrikeLock] Performing command '+command);
+                        self.lockDev.performCommand(command);
+                    }
                 }
             }
         },
