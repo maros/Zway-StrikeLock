@@ -1,3 +1,6 @@
+1.02 2016 Apr 02, Sat
+    * Ignore command if door is already locked/unlocked
+
 1.01 2016 Mar 22, Tue
     * Update icon colors
     * Unify handling of sensor/lock devices
