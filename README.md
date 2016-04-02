@@ -12,15 +12,15 @@ door sensor information and allows to add further functionality.
 
 Lock device
 
-## disableLock
+## lockHide
 
-Disable original lock device in UI.
+Hide original lock device in UI.
 
 ## sensor
 
 Binary door sensor
 
-## hideSensor
+## sensorHide
 
 Hide original binary sensor in UI.
 
