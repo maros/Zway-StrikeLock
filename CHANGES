@@ -1,3 +1,6 @@
+1.03 2016 May 09, Mon
+    * Ignore command if door is already open
+
 1.02 2016 Apr 02, Sat
     * Ignore command if door is already locked/unlocked
 
