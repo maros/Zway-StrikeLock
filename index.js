@@ -59,8 +59,11 @@ StrikeLock.prototype.init = function (config) {
                     self.updateState();
                 } else if (command === 'close' || command === 'open') {
                     var lockLevel = self.lockDev.get('metrics:level');
+                    var sensorLevel = self.sensorDev.get('metrics:level');
                     if (command === lockLevel) {
-                        console.log('[StrikeLock] Ignoring command '+command);
+                        console.log('[StrikeLock] Ignoring command '+command+': Lock is already '+command+'d');
+                    } else if (sensorLevel === 'on') {
+                        console.log('[StrikeLock] Ignoring command '+command+': Door is already opened');
                     } else {
                         console.log('[StrikeLock] Performing command '+command);
                         self.lockDev.performCommand(command);
