@@ -12,7 +12,7 @@ Description:
 function StrikeLock (id, controller) {
     // Call superconstructor first (AutomationModule)
     StrikeLock.super_.call(this, id, controller);
-    
+
     this.vDev               = undefined;
     this.sensorDevHidden    = false;
     this.lockDevHidden      = false;
@@ -33,11 +33,11 @@ _module = StrikeLock;
 
 StrikeLock.prototype.init = function (config) {
     StrikeLock.super_.prototype.init.call(this, config);
-    
+
     var self = this;
-    
+
     self.langFile = self.controller.loadModuleLang(self.constructor.name);
-    
+
     // Create vdev
     self.vDev = self.controller.devices.create({
         deviceId: "StrikeLock_" + self.id,
@@ -79,9 +79,9 @@ StrikeLock.prototype.init = function (config) {
 
 StrikeLock.prototype.initCallback = function() {
     var self = this;
-    
+
     self.callback   = _.bind(self.updateState,self);
-    
+
     // Find, hide & bind devices
     var ok = true;
     _.each(self.devices,function(type) {
@@ -92,17 +92,17 @@ StrikeLock.prototype.initCallback = function() {
             console.error('[StrikeLock] Missing '+type+' device '+deviceId);
             return;
         }
-        
+
         if (self.config[type+'Hide']
             && vDev.get('visibility') !== false) {
             self[type+'DevHidden'] = true;
             vDev.set({'visibility': false});
         }
-        
+
         vDev.on('change:metrics:level',self.callback);
         self[type+'Dev'] = vDev;
     });
-    
+
     if (ok) {
         self.callback();
     }
@@ -110,31 +110,31 @@ StrikeLock.prototype.initCallback = function() {
 
 StrikeLock.prototype.stop = function () {
     var self = this;
-    
+
     if (self.vDev) {
         self.controller.devices.remove(self.vDev.id);
         self.vDev = undefined;
     }
-    
+
     // Find, show & unbind devices
     _.each(self.devices,function(type) {
         var vDev = self.controller.devices.get(self.config[type]);
-        
+
         if (vDev === null) {
             return;
         }
-        
+
         if (self[type+'DevHidden'] === true) {
             self[type+'DevHidden'] = false;
             vDev.set({'visibility': true});
         }
-        
+
         vDev.off('change:metrics:level',self.callback);
         self[type+'Dev'] = vDev;
     });
-    
+
     self.callback = undefined;
-    
+
     StrikeLock.super_.prototype.stop.call(this);
 };
 
@@ -144,13 +144,13 @@ StrikeLock.prototype.stop = function () {
 
 StrikeLock.prototype.updateState = function (event) {
     var self = this;
-    
+
     console.log('[StrikeLock] Got update');
     var lockLevel       = self.lockDev.get('metrics:level');
     var sensorLevel     = self.sensorDev.get('metrics:level');
     var lockIcon        = (lockLevel === 'close') ? 'lock':'unlock';
     var sensorIcon      = (sensorLevel === 'off') ? 'close':'open';
-    
+
     if (self.vDev.get('deviceType') === 'doorlock') {
         self.vDev.set('metrics:level',lockLevel);
     } else {
